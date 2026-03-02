@@ -1,0 +1,41 @@
+body {
+    font-family: Arial;
+    padding: 30px;
+}
+
+.top-bar {
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    padding: 8px 12px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.buttons button {
+    padding: 8px 12px;
+    margin: 5px;
+    border: none;
+    background: #28a745;
+    color: white;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+button.delete {
+    background: red;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Low Stock Management</title>
+    <link rel="stylesheet" href="/static/css/low_stock.css">
+</head>
+<body>
+
+<h2>Low Stock Management</h2>
+
+<div class="top-bar">
+    <input type="text" id="search" placeholder="Search product...">
+    
+    <select id="filter">
+        <option value="all">All</option>
+        <option value="low">Low Stock</option>
+        <option value="out">Out of Stock</option>
+    </select>
+
+    <button onclick="loadLowStock()">Search</button>
+    <a href="/dashboard"><button>Back to Dashboard</button></a>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Low Limit</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="stockTable">
+    </tbody>
+</table>
+
+<script src="/static/js/low_stock.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <script defer src="{{ url_for('static', filename='js/auth.js') }}"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>Create Account</h2>
+
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+
+            <div class="password-wrapper">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <span onclick="togglePassword()">👁</span>
+            </div>
+
+            <button type="submit">Create Account</button>
+        </form>
+
+        <p>
+            Already have account?
+            <a href="/login">Login</a>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

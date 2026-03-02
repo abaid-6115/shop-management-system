@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Purchase Return</title>
+    <link rel="stylesheet" href="/static/css/purchase-return.css">
+</head>
+<body>
+
+<div class="container">
+
+<h2>Purchase Return</h2>
+
+<a href="/dashboard" class="btn">Back to Dashboard</a>
+
+<br><br>
+
+<input type="text" id="invoiceInput" placeholder="Enter Purchase Invoice">
+<button onclick="searchInvoice()" class="btn">Load</button>
+
+<div id="supplierDetails"></div>
+
+<table id="itemsTable">
+<thead>
+<tr>
+<th>Product</th>
+<th>Purchased</th>
+<th>Returned Before</th>
+<th>Stock</th>
+<th>Return Qty</th>
+<th>Cost</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+<br>
+
+GST % 
+<input type="number" id="gst" value="0" oninput="calculateTotals()">
+
+Discount 
+<input type="number" id="discount" value="0" oninput="calculateTotals()">
+
+<h3 id="grandTotal">Grand Total: 0</h3>
+
+<select id="refundMethod">
+<option value="Adjusted">Adjusted</option>
+<option value="Cash">Cash</option>
+</select>
+<label>Reason:</label>
+<select id="reason">
+    <option value="Damaged">Damaged</option>
+    <option value="Wrong Item">Wrong Item</option>
+    <option value="Expired">Expired</option>
+    <option value="Quality Issue">Quality Issue</option>
+</select>
+
+<br><br>
+
+<button onclick="saveReturn()" class="btn">Save</button>
+<button onclick="window.print()" class="btn">Print</button>
+
+</div>
+
+<script src="/static/js/purchase-return.js"></script>
+</body>
+</html>

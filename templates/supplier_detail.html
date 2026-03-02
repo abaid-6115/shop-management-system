@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supplier Detail</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Supplier Detail</h2>
+    <a href="/suppliers" class="btn back-btn">← Back</a>
+
+    <div class="card">
+        <p><strong>Name:</strong> {{ supplier.supplier_name }}</p>
+        <p><strong>Phone:</strong> {{ supplier.phone }}</p>
+        <p><strong>Address:</strong> {{ supplier.address }}</p>
+        <p><strong>Opening Balance:</strong> {{ supplier.opening_balance }}</p>
+        <p class="due"><strong>Total Payable:</strong> {{ supplier.total_payable }}</p>
+        <p><strong>Created At:</strong> {{ supplier.created_at }}</p>
+    </div>
+</div>
+
+<script src="/static/js/main.js"></script>
+</body>
+</html>

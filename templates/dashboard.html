@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Shop Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Shop Admin</h2>
+
+        <ul>
+            <li><a href="/dashboard" class="active">Dashboard</a></li>
+            <li><a href="/sales">Sales</a></li>
+            <li><a href="/pos">Manual POS</a></li>
+            <li><a href="/purchase">Purchase</a></li>
+            <li><a href="/sale_return">Sale Returns</a></li>
+            <li><a href="/purchase-return">Purchase Return</a></li>
+            <li><a href="/stock">Stock</a></li>
+            <li><a href="/low-stock">Low stock Items</a></li>
+            <li><a href="/profit-loss">Profit & loss</a></li>
+            <li><a href="/expenses">Expenses</a></li>
+            <li><a href="/reports">Reports</a></li>
+            <li><a href="/customers">Customer Detail</a></li>
+            <li><a href="/suppliers">Supplier Detail</a></li>
+            <li><a href="/settings">Settings</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+
+        <!-- Top Navbar -->
+        <div class="topbar">
+            <h3>Dashboard</h3>
+            <div class="user">
+                Logged in as: {{ email }}
+            </div>
+        </div>
+
+        <!-- Cards -->
+         <div class="cards">
+
+    <div class="card">
+        <h4>Total Sales</h4>
+        <p>PKR {{ "%.2f"|format(total_sales) }}</p>
+    </div>
+
+    <div class="card">
+        <h4>Total Expenses</h4>
+        <p>PKR {{ "%.2f"|format(total_expenses) }}</p>
+    </div>
+
+    <div class="card">
+        <h4>Net Profit</h4>
+        <p>PKR {{ "%.2f"|format(net_profit) }}</p>
+    </div>
+
+    <div class="card">
+        <h4>Low Stock Items</h4>
+        <p>{{ low_stock_count }} Items</p>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sales.css') }}">
+</head>
+<body>
+
+<div class="sales-container">
+
+    <div class="top-bar">
+        <h2>Stock Sales</h2>
+        <a href="/dashboard" class="back-btn">🏠 Back to Dashboard</a>
+    </div>
+
+    <div class="invoice-info">
+        <div>
+            <label>Invoice No</label>
+            <input type="text" value="{{ invoice_number }}" readonly>
+        </div>
+
+        <div>
+            <label>Customer Name (Optional)</label>
+            <input type="text" id="customerName">
+        </div>
+
+        <div>
+            <label>Customer Phone (Optional)</label>
+            <input type="text" id="customerPhone">
+        </div>
+    </div>
+
+    <!-- Product Section -->
+    <div class="product-section">
+
+        <label>Select Product</label>
+        <input list="productList" id="productSearch" placeholder="Type product name...">
+
+        <datalist id="productList">
+            {% for p in products %}
+            <option value="{{ p.product_name }}"
+                    data-id="{{ p.id }}"
+                    data-price="{{ p.selling_price }}"
+                    data-qty="{{ p.quantity }}">
+            {% endfor %}
+        </datalist>
+
+        <input type="number" id="quantity" placeholder="Quantity">
+        <button onclick="addToCart()">Add</button>
+    </div>
+
+    <!-- Cart Table -->
+    <table id="cartTable">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <!-- Billing Section -->
+    <div class="billing">
+
+        <div>
+            <label>GST %</label>
+            <input type="number" id="gst" value="0">
+        </div>
+
+        <div>
+            <label>Discount</label>
+            <input type="number" id="discount" value="0">
+        </div>
+
+        <div>
+            <label>Payment Method</label>
+            <select id="paymentMethod">
+                <option>Cash</option>
+                <option>Card</option>
+                <option>Online</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Paid Amount</label>
+            <input type="number" id="paidAmount" value="0">
+        </div>
+
+    </div>
+
+    <div class="summary">
+        <h3>Subtotal: <span id="subtotal">0</span></h3>
+        <h3>Grand Total: <span id="grandTotal">0</span></h3>
+        <h3>Change: <span id="change">0</span></h3>
+    </div>
+
+    <div class="buttons">
+        <button class="complete-btn" onclick="completeSale()">Save✅</button>
+        <button class="print-btn" onclick="window.print()">Print Invoice</button>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/sales.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profit / Loss</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profit_loss.css') }}">
+</head>
+<body>
+
+<h2>Profit / Loss Report</h2>
+
+<div class="filters">
+    <input type="date" id="start_date">
+    <input type="date" id="end_date">
+    <button onclick="loadProfit()">Filter</button>
+    <a href="/dashboard"><button>Back to Dashboard</button></a>
+</div>
+
+<div class="cards">
+    <div class="card">Total Sales: <span id="sales"></span></div>
+    <div class="card">Total Purchase: <span id="purchase"></span></div>
+    <div class="card">Total Expenses: <span id="expenses"></span></div>
+    <div class="card">Sale Returns: <span id="sale_return"></span></div>
+    <div class="card">Purchase Returns: <span id="purchase_return"></span></div>
+    <div class="card profit">Net Profit/Loss: <span id="net_profit"></span></div>
+</div>
+
+<h3>Monthly Profit Graph</h3>
+<div id="graph">
+    <iframe src="/profit-graph" width="600" height="400"></iframe>
+</div>
+
+<script src="{{ url_for('static', filename='js/profit_loss.js') }}"></script>
+</body>
+</html>

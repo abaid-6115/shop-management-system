@@ -1,0 +1,22 @@
+body {
+    font-family: Arial;
+    padding: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.card {
+    background: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.profit {
+    background: #d4edda;
+}

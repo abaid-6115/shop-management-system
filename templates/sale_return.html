@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sale Return</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sale_return.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+        <div class="top-bar">
+            <h2>Sale Return</h2>
+        <a href="/dashboard" class="back-btn">🏠 Back to Dashboard</a>
+    </div>
+    <input type="text" id="invoice" placeholder="Enter Invoice Number">
+    <button onclick="searchSale()">Search</button>
+
+    <div id="customer_info"></div>
+
+    <table id="return_table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Sold</th>
+                <th>Returned</th>
+                <th>Remaining</th>
+                <th>Return Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h3>Total Refund: <span id="total_refund">0</span></h3>
+
+    <select id="refund_method">
+        <option value="Cash">💵Cash</option>
+        <option value="Bank">🏧Bank</option>
+    </select>
+
+    <textarea id="reason" placeholder="Reason for return"></textarea>
+
+    <button onclick="completeReturn()">Save✅</button>
+    <button onclick="window.print()">🖨Print Receipt</button>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/sale_return.js') }}"></script>
+
+</body>
+</html>

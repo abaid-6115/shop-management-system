@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stock.css') }}">
+</head>
+<body>
+
+<div class="stock-container">
+
+    <div class="header">
+        <h2>Stock Management</h2>
+        <button onclick="goBack()" class="back-btn">🏠   Back to Dashboard </button>
+    </div>
+
+    <!-- Add Product -->
+    <div class="form-section">
+        <input type="text" id="productName" placeholder="Product Name">
+        <input type="text" id="category" placeholder="Category">
+
+        <select id="unitType">
+            <option value="Piece">Piece</option>
+            <option value="weight">KG</option>
+            <option value="Liter">Liter</option>
+        </select>
+
+        <input type="number" id="costPrice" placeholder="Cost Price">
+        <input type="number" id="sellingPrice" placeholder="Selling Price">
+        <input type="number" id="quantity" placeholder="Quantity">
+
+        <button onclick="addProduct()">Add Product</button>
+    </div>
+
+    <!-- Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Unit</th>
+                <th>Cost</th>
+                <th>Sell</th>
+                <th>Qty</th>
+                <th>Total Value</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in products %}
+            <tr class="{% if p.quantity <= 10 %}low-stock{% endif %}">
+                <td>{{ p.product_name }}</td>
+                <td>{{ p.category }}</td>
+                <td>{{ p.unit_type }}</td>
+                <td>
+                    <input type="number" value="{{ p.cost_price }}" id="cost-{{ p.id }}">
+                </td>
+                <td>
+                    <input type="number" value="{{ p.selling_price }}" id="sell-{{ p.id }}">
+                </td>
+                <td>
+                    <input type="number" value="{{ p.quantity }}" id="qty-{{ p.id }}">
+                </td>
+                <td>{{ p.total_value }}</td>
+                <td>
+                    {% if p.quantity <= 0 %}
+                        Out of Stock
+                    {% elif p.quantity <= 10 %}
+                        Low Stock
+                    {% else %}
+                        In Stock
+                    {% endif %}
+                </td>
+                <td>
+                    <button onclick="updateProduct('{{ p.id }}')" class="edit-btn">Edit</button>
+                    <a href="/delete_product/{{ p.id }}" class="delete-btn">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/stock.js') }}"></script>
+</body>
+</html>

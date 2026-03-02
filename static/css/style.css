@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 95%;
+    margin: auto;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1e1e1e;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #333;
+    text-align: center;
+}
+
+th {
+    background: #222;
+}
+
+tr:hover {
+    background: #2a2a2a;
+}
+
+.btn {
+    background: #00c853;
+    color: white;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.small-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 15px;
+    background: #2962ff;
+}
+
+.manual-tag {
+    background: orange;
+    padding: 4px 8px;
+    border-radius: 3px;
+    color: black;
+    font-weight: bold;
+}
+
+.due {
+    color: red;
+    font-weight: bold;
+}
+
+.card {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+}

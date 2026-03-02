@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .invoice-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .logo {
+            max-height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .details {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .details p {
+            margin: 4px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .totals {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .totals p {
+            margin: 4px 0;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .print-btn {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .print-btn button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* 🔥 PRINT ONLY INVOICE */
+        @media print {
+
+            body * {
+                visibility: hidden;
+            }
+
+            .invoice-container, .invoice-container * {
+                visibility: visible;
+            }
+
+            .invoice-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="invoice-container">
+
+    <!-- SHOP HEADER -->
+    <div class="header">
+        {% if shop.logo_url %}
+            <img src="{{ shop.logo_url }}" class="logo">
+        {% endif %}
+        <h2>{{ shop.shop_name }}</h2>
+        <p>{{ shop.address }}</p>
+        <p>Phone: {{ shop.phone }}</p>
+    </div>
+
+    <!-- INVOICE INFO -->
+    <div class="details">
+        <p><strong>Invoice Type:</strong> {{ type|upper }}</p>
+
+        <p><strong>Invoice No:</strong>
+            {{ invoice.invoice_number
+               or invoice.purchase_invoice
+               or invoice.return_invoice }}
+        </p>
+
+        <p><strong>Date:</strong>
+            {{ invoice.created_at
+               or invoice.purchase_date
+               or invoice.expense_date }}
+        </p>
+
+        {% if party.name %}
+            <p><strong>Name:</strong> {{ party.name }}</p>
+            <p><strong>Phone:</strong> {{ party.phone }}</p>
+        {% endif %}
+    </div>
+
+    <!-- ITEMS TABLE -->
+    {% if items %}
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>
+                    {{ item.stock_products.product_name
+                       if item.stock_products
+                       else item.product_name
+                       or item.item_name }}
+                </td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price or item.cost_price }}</td>
+                <td>{{ item.total }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    <!-- TOTALS -->
+    <div class="totals">
+        <p><strong>Subtotal:</strong> {{ invoice.subtotal or 0 }}</p>
+        <p><strong>GST ({{ invoice.gst_percentage or invoice.tax_percentage or 0 }}%):</strong>
+            {{ invoice.gst_amount or invoice.tax_amount or 0 }}
+        </p>
+        <p><strong>Discount:</strong> {{ invoice.discount or 0 }}</p>
+
+        <h3>
+            Grand Total:
+            {{ invoice.total_amount
+               or invoice.grand_total
+               or invoice.total_refund
+               or invoice.amount
+               or 0 }}
+        </h3>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>{{ shop.return_policy }}</p>
+        <p>Thank you for your business!</p>
+    </div>
+
+    <!-- PRINT BUTTON -->
+    <div class="print-btn">
+        <button onclick="window.print()">Print Invoice</button>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Suppliers</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Supplier List</h2>
+    <a href="/dashboard" class="btn back-btn">← Back to Dashboard</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Opening Balance</th>
+                <th>Total Payable</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for supplier in suppliers %}
+            <tr>
+                <td>{{ supplier.supplier_name }}</td>
+                <td>{{ supplier.phone }}</td>
+                <td>{{ supplier.opening_balance }}</td>
+                <td class="due">{{ supplier.total_payable }}</td>
+                <td>
+                    <a href="/supplier/{{ supplier.id }}" class="btn small-btn">View</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="/static/js/main.js"></script>
+</body>
+</html>

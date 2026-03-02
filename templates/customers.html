@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customers</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Customer List</h2>
+
+    <a href="/dashboard" class="btn back-btn">← Back to Dashboard</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Source</th>
+                <th>Total Purchase</th>
+                <th>Total Paid</th>
+                <th>Total Due</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            <tr>
+                <td>{{ customer.customer_name }}</td>
+                <td>{{ customer.phone }}</td>
+                <td>
+                    {% if customer.source == 'Manual POS' %}
+                        <span class="manual-tag">Manual POS</span>
+                    {% else %}
+                        Sale
+                    {% endif %}
+                </td>
+                <td>{{ customer.total_purchase }}</td>
+                <td>{{ customer.total_paid }}</td>
+                <td class="due">{{ customer.total_due }}</td>
+                <td>
+                    <a href="/customer/{{ customer.id }}" class="btn small-btn">View</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="/static/js/main.js"></script>
+</body>
+</html>

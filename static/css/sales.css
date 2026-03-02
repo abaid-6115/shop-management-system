@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+}
+
+.sales-container {
+    width: 95%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-btn {
+    text-decoration: none;
+    background: #444;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.invoice-info,
+.product-section,
+.billing {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.invoice-info div,
+.billing div {
+    display: flex;
+    flex-direction: column;
+}
+
+input, select {
+    padding: 7px;
+    min-width: 150px;
+}
+
+button {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.complete-btn {
+    background: green;
+    color: white;
+}
+
+.print-btn {
+    background: blue;
+    color: white;
+}
+
+.summary {
+    margin-top: 15px;
+}
+
+.buttons {
+    margin-top: 15px;
+}

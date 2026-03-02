@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reports</title>
+    <link rel="stylesheet" href="/static/css/reports.css">
+</head>
+<body>
+
+<div class="top-bar">
+    <a href="/dashboard" class="back-btn">⬅ Back to Dashboard</a>
+</div>
+
+<h2>Reports</h2>
+
+<div class="buttons">
+    <button onclick="loadData('sales')">Sales</button>
+    <button onclick="loadData('purchase')">Purchase</button>
+    <button onclick="loadData('sale_return')">Sale Return</button>
+    <button onclick="loadData('purchase_return')">Purchase Return</button>
+    <button onclick="loadData('pos')">POS</button>
+    <button onclick="loadData('expenses')">Expenses</button>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Invoice Number</th>
+            <th>Total Amount</th>
+            <th>Date</th>
+            <th>Print</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody id="reportTable"></tbody>
+</table>
+
+<script src="/static/js/reports.js"></script>
+</body>
+</html>

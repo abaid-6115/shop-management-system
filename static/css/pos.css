@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.pos-container {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 1100px;
+    margin: auto;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.pos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-buttons button {
+    margin-left: 10px;
+}
+
+.back-btn {
+    background: #6c757d;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.print-btn {
+    background: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.customer-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.customer-section input {
+    padding: 8px;
+    width: 250px;
+}
+
+#itemsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+#itemsTable th, #itemsTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.add-btn {
+    background: #17a2b8;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.summary-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    gap: 40px;
+}
+
+.left-summary, .right-summary {
+    width: 45%;
+}
+
+.summary-section input, 
+.summary-section select {
+    width: 100%;
+    padding: 7px;
+    margin-bottom: 10px;
+}
+
+.complete-btn {
+    background: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+@media print {
+    .back-btn,
+    .print-btn,
+    .add-btn,
+    .complete-btn {
+        display: none;
+    }
+}

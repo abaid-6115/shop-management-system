@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings</title>
+    <link rel="stylesheet" href="/static/css/settings.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>⚙ Settings</h2>
+
+    <a href="/dashboard" class="back-btn">← Back to Dashboard</a>
+
+    <!-- ================= SHOP SETTINGS ================= -->
+    <div class="card">
+        <h3>Shop Settings</h3>
+
+        <label>Shop Name</label>
+        <input type="text" id="shop_name" value="{{ shop.shop_name }}">
+
+        <label>Logo URL</label>
+        <input type="text" id="logo_url" value="{{ shop.logo_url }}">
+
+        <label>Address</label>
+        <textarea id="address">{{ shop.address }}</textarea>
+
+        <label>Phone</label>
+        <input type="text" id="phone" value="{{ shop.phone }}">
+
+        <label>GST Percentage</label>
+        <input type="number" id="gst_percentage" value="{{ shop.gst_percentage }}">
+
+        <label>Currency Symbol</label>
+        <input type="text" id="currency_symbol" value="{{ shop.currency_symbol }}">
+
+        <label>Return Policy</label>
+        <textarea id="return_policy">{{ shop.return_policy }}</textarea>
+
+        <label>Footer Message</label>
+        <textarea id="footer_message">{{ shop.footer_message }}</textarea>
+
+        <button onclick="saveShopSettings()">Save Shop Settings</button>
+    </div>
+
+    <!-- ================= SYSTEM SETTINGS ================= -->
+    <div class="card">
+        <h3>System Settings</h3>
+
+        <label>Default Low Stock Limit</label>
+        <input type="number" id="default_low_stock_limit" value="{{ system.default_low_stock_limit }}">
+
+        <label>Invoice Prefix</label>
+        <input type="text" id="invoice_prefix" value="{{ system.invoice_prefix }}">
+
+        <label>Auto Logout (Minutes)</label>
+        <input type="number" id="auto_logout_minutes" value="{{ system.auto_logout_minutes }}">
+
+        <label>
+            <input type="checkbox" id="show_low_stock_badge"
+            {% if system.show_low_stock_badge %}checked{% endif %}>
+            Show Low Stock Badge on Dashboard
+        </label>
+
+        <button onclick="saveSystemSettings()">Save System Settings</button>
+    </div>
+    <!-- ================= ACCOUNT SETTINGS ================= -->
+<div class="card">
+    <h3>Account Settings</h3>
+
+    <label>Current Email</label>
+    <input type="text" value="{{ session['user_email'] }}" disabled>
+
+    <label>New Email</label>
+    <input type="email" id="new_email">
+
+    <button onclick="changeEmail()">Change Email</button>
+
+    <hr style="margin:20px 0;">
+
+    <label>New Password</label>
+    <input type="password" id="new_password">
+
+    <button onclick="changePassword()">Change Password</button>
+</div>
+</div>
+
+<script src="/static/js/settings.js"></script>
+</body>
+</html>

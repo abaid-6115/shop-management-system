@@ -1,0 +1,38 @@
+body {
+    font-family: Arial;
+    padding: 20px;
+}
+
+.top-bar {
+    margin-bottom: 20px;
+}
+
+input, select, button {
+    padding: 8px;
+    margin-right: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.low {
+    background-color: #fff3cd;
+}
+
+.out {
+    background-color: #f8d7da;
+}
+
+iframe {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+}

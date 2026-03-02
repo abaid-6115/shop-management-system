@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expenses</title>
+    <link rel="stylesheet" href="/static/css/expenses.css">
+</head>
+<body>
+
+<div class="container">
+
+<h2>Expenses Management</h2>
+
+<a href="/dashboard" class="btn">Back to Dashboard</a>
+
+<hr>
+
+<h3>Add Expense</h3>
+
+<input type="date" id="expense_date">
+<select id="category">
+<option>Rent</option>
+<option>Electricity</option>
+<option>Internet</option>
+<option>Salary</option>
+<option>Transport</option>
+<option>Maintenance</option>
+<option>Office Supplies</option>
+<option>Marketing</option>
+<option>Other</option>
+</select>
+
+<input type="text" id="description" placeholder="Description">
+<input type="number" id="amount" placeholder="Amount">
+
+<select id="payment_method">
+<option>Cash</option>
+<option>Bank</option>
+<option>Online</option>
+</select>
+
+<input type="text" id="reference" placeholder="Reference No">
+
+<button onclick="addExpense()" class="btn">Save Expense</button>
+
+<hr>
+
+<h3>Filter Expenses</h3>
+
+From <input type="date" id="start_date">
+To <input type="date" id="end_date">
+
+<select id="filter_category">
+<option>All</option>
+<option>Rent</option>
+<option>Electricity</option>
+<option>Internet</option>
+<option>Salary</option>
+<option>Transport</option>
+<option>Maintenance</option>
+<option>Office Supplies</option>
+<option>Marketing</option>
+<option>Other</option>
+</select>
+
+<select id="filter_payment">
+<option>All</option>
+<option>Cash</option>
+<option>Bank</option>
+<option>Online</option>
+</select>
+
+<button onclick="loadExpenses()" class="btn">Filter</button>
+
+<hr>
+
+<h3>Total Expense: <span id="totalExpense">0</span></h3>
+
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Category</th>
+<th>Description</th>
+<th>Amount</th>
+<th>Payment</th>
+<th>Reference</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody id="expenseTable"></tbody>
+</table>
+
+</div>
+
+<script src="/static/js/expenses.js"></script>
+</body>
+</html>

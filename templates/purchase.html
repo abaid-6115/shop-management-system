@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Purchase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/purchase.css') }}">
+</head>
+<body>
+
+    <div class="top-bar">
+        <h2>Purchase Invoice</h2>
+        <a href="/dashboard" class="back-btn">🏠 Back to Dashboard</a>
+    </div>
+
+Invoice: {{ invoice }} <br>
+Date: {{ date }}
+
+<h3>Supplier Info</h3>
+<input type="text" id="supplier_name" placeholder="Supplier Name">
+<input type="text" id="phone" placeholder="Phone">
+
+<h3>Add Product</h3>
+<input type="text" id="product" placeholder="Product">
+<input type="text" id="category" placeholder="Category">
+
+<select id="unit">
+    <option>Piece</option>
+    <option>Weight</option>
+    <option>Litre</option>
+</select>
+
+<input type="number" id="quantity" placeholder="Quantity">
+<input type="number" id="cost" placeholder="Cost Price">
+<input type="number" id="sell" placeholder="Sell Price">
+
+<button onclick="addProduct()">Add Product</button>
+
+<h3>Product List</h3>
+<table border="1" id="productTable">
+<thead>
+<tr>
+<th>Product</th><th>Category</th><th>Unit</th>
+<th>Qty</th><th>Cost</th><th>Sell</th>
+<th>Total</th><th>Action</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+<h3>Totals</h3>
+Subtotal: <span id="subtotal">0</span><br>
+
+GST% <input type="number" id="gst" value="0" oninput="calculateTotals()"><br>
+Tax Amount: <span id="tax_amount">0</span><br>
+
+Discount <input type="number" id="discount" value="0" oninput="calculateTotals()"><br>
+
+Grand Total: <span id="grand_total">0</span><br>
+
+Paid <input type="number" id="paid" value="0" oninput="calculateTotals()"><br>
+
+Balance: <span id="balance">0</span><br>
+
+<select id="payment_method">
+<option>Cash</option>
+<option>Bank</option>
+<option>Credit</option>
+</select>
+
+<br><br>
+<button onclick="completePurchase()">Save✅</button>
+<button onclick="window.print()">Print</button>
+
+<script src="{{ url_for('static', filename='js/purchase.js') }}"></script>
+</body>
+</html>
